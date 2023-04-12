@@ -21,6 +21,7 @@ run file [here](https://github.com/wwsyan/RND_for_RestMin_v1/blob/main/size5_mod
 ### n_steps: 1024 VS 2048
 | Episode length | Episode reward | Info |
 | :---: | :---: | :---: |
-|<img src="size5_mode0/images/rollout_ep_len_mean.png">|<img src="size5_mode0/images/rollout_ep_rew_mean.png">||
+|<img src="size6_mode0/images/ep_len_1.png">|<img src="size6_mode0/images/ep_rew_1.png">||
+### RND: observation normalization VS non-normalization
 ### reward: single VS diverse
-### RND: observation normalization VS non-normalization 
+ 

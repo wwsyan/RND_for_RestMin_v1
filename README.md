@@ -22,7 +22,7 @@ BTW, it is worth noting that since RND always gives high rewards for rare states
 | 幕长 | 幕奖励 | 信息 | 结论 |
 | :---: | :---: | :---: | :---: |
 |<img src="size6_mode0/images/ep_len_1.png">|<img src="size6_mode0/images/ep_rew_1.png">|橙：1024, 蓝：2048| 1024 更优 |
-### RND: 观测向量标准化 VS 不标准化
+### RND: 观测向量 标准化 VS 不标准化
 | 幕长 | 幕奖励 | 信息 | 结论 |
 | :---: | :---: | :---: | :---: |
 |<img src="size6_mode0/images/ep_len_2.png">|<img src="size6_mode0/images/ep_rew_2.png">|红：non-norm, 蓝：norm| norm 更优 |
@@ -38,12 +38,16 @@ BTW, it is worth noting that since RND always gives high rewards for rare states
   <li>奖励2：<code>if count > 3: reward = -5*count</code></li>
 </ul>
 这么设计的想法是希望通过惩罚分“淹没”内在奖励，来保证一些重要的前期动作能顺利执行。
+在前期动作全部正确选择后，将由内在奖励完全引导决策过程，因为只有最优解才能获得正的奖励值（+100），其余次优解奖励皆为0。
 
 | 幕长 | 幕奖励 | 信息 | 结论 |
 | :---: | :---: | :---: | :---: |
 |<img src="size6_mode0/images/ep_len_3.png">|<img src="size6_mode0/images/ep_rew_3.png">|灰：奖励2, 绿：奖励1| 奖励2更优 |
 
 阶梯式的奖励变化效果更好，应该是优势函数发挥了作用，使得agent总能依据当前自身发展状况做出选择。
+
+## Size=6, Mode=1
+
 
 
 

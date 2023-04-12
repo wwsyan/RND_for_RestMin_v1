@@ -19,18 +19,34 @@ BTW, it is worth noting that since RND always gives high rewards for rare states
 
 ## Size=6, Mode=0
 ### n_steps: 1024 VS 2048
-| Episode length | Episode reward | Info | Conclusion |
+| 幕长 | 幕奖励 | 信息 | 结论 |
 | :---: | :---: | :---: | :---: |
-|<img src="size6_mode0/images/ep_len_1.png">|<img src="size6_mode0/images/ep_rew_1.png">|orange:1024, blue:2048| 1024 更优 |
-### RND: observation normalization VS non-normalization
-| Episode length | Episode reward | Info | Conclusion |
+|<img src="size6_mode0/images/ep_len_1.png">|<img src="size6_mode0/images/ep_rew_1.png">|橙：1024, 蓝：2048| 1024 更优 |
+### RND: 观测向量标准化 VS 不标准化
+| 幕长 | 幕奖励 | 信息 | 结论 |
 | :---: | :---: | :---: | :---: |
-|<img src="size6_mode0/images/ep_len_2.png">|<img src="size6_mode0/images/ep_rew_2.png">|red:non-norm, blue:norm| norm 更优 |
-### reward: single VS diverse
+|<img src="size6_mode0/images/ep_len_2.png">|<img src="size6_mode0/images/ep_rew_2.png">|红：non-norm, 蓝：norm| norm 更优 |
+### reward: 单一惩罚 VS 阶梯惩罚
 在上述实验中，外部奖励只能通过达成最优解得到，即：<code>reward = 100 if count == 1 else 0</code>。
 从结果上看，效果并不理想。虽然agent能够探索到最优解，但一旦探索到了最优解，就会导致前期某些重要的动作出现频率增加。
 由于RND的机制，这些动作的内在奖励反而减少，导致了agent不能持续获取高收益。
 这体现了在 Exploration 与 Exploitation 的权衡中，RND是一种倾向于 Exploration 的算法。
+
+在接下来的实验中，将尝试添加额外的环境奖励（惩罚）以获得更好的平均分：
+<ul>
+  <li>奖励1：<code>if count > 3: reward = -100</code></li>
+  <li>奖励2：<code>if count > 3: reward = -5*count</code></li>
+</ul>
+这么设计的想法是希望通过惩罚分“淹没”内在奖励，来保证一些重要的前期动作能顺利执行。
+
+| 幕长 | 幕奖励 | 信息 | 结论 |
+| :---: | :---: | :---: | :---: |
+|<img src="size6_mode0/images/ep_len_3.png">|<img src="size6_mode0/images/ep_rew_3.png">|灰：奖励2, 绿：奖励1| 奖励2更优 |
+
+阶梯式的奖励变化效果更好，应该是优势函数发挥了作用，使得agent总能依据当前自身发展状况做出选择。
+
+
+
 
 
 

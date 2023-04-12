@@ -5,9 +5,9 @@ Solving RestMin_v1 with  Random-Network-Distillation, in the framework of Stable
 >
 > Compared to other exploration strategies, such as epsilon-greedy or softmax exploration, RND has several benefits, including its simplicity and scalability. Additionally, because RND does not require any information about the task at hand, it can be easily applied to many different types of reinforcement learning problems. Overall, Random Network Distillation has proven to be a highly effective method for improving the exploration capabilities of reinforcement learning agents.
 
-In this enviroment, the external reward can only be obtained in terminal state.
-Thus, before reaching the optimal solution, the decision of the agent is entirely guided by intrinsic rewards provided by RND.
-BTW, it is worth noting that since RND always gives high rewards for rare states, it is unlikely to achieve 100% perfect solution with this algorithm alone.
+理想情况下，将 RestMin_v1 视作一个稀疏奖励的探索问题，除了最优解能获得正的奖励值，其余皆为0。因此，RND提供的内在奖励将完全主导决策过程。
+值得注意的是，由于RND总是会给予稀有状态更高的奖励分，所以总会出现“反复横跳”的现象（探索 or 开采？RND倾向前者）。
+所以想仅依靠RND，是无法实现100%最优解的。 
 
 ## Size=5, Mode=0
 仓库 [here](https://github.com/wwsyan/RND_for_RestMin_v1/tree/main/size5_mode0), 

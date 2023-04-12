@@ -1,0 +1,4 @@
+PPO_1: n_steps=1024
+PPO_2: n_steps=2048
+PPO_3: change env -> if count > 3: reward = -100
+PPO_4: change env -> if count > 3: reward = -5*count

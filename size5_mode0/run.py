@@ -54,7 +54,7 @@ if __name__ == "__main__":
                                      print_buffer_data=False
                                      )
     
-    model.learn(50e4, callback=DACallback)
+    model.learn(10e4, callback=DACallback)
     model.save("ppo")
     del model
     

@@ -47,7 +47,19 @@ Solving RestMin_v1 with  Random-Network-Distillation, in the framework of Stable
 阶梯式的奖励变化效果更好，应该是优势函数发挥了作用，使得agent总能依据当前自身发展状况做出选择。
 
 ## Size=6, Mode=1
+在这个模式中，由于合法动作的大量增加，探索的难度也大大提升了。另外，由于两个异色子可以无限横跳，所以环境中加了最大50步的限制。
+### Benchmark: PPO
+使用标准的PPO作为基准，需要对环境作出一些修改，使之不是奖励稀疏的环境：
+<code>reward = 100 if count == 2 else 5*(6-count)</code>
 
+| 幕长 | 幕奖励 | 说明 | 结论 |
+| :---: | :---: | :---: | :---: |
+|<img src="size6_mode1/images/ep_len_2.png">|<img src="size6_mode1/images/ep_rew_2.png">| 蓝：0-2M步，红：2M-4M步 | 在测试环境中运行，未发现能探索到最优解 |
+
+### RND
+| 幕长 | 幕奖励 | 说明 | 结论 |
+| :---: | :---: | :---: | :---: |
+|<img src="size6_mode1/images/ep_len_1.png">|<img src="size6_mode1/images/ep_rew_1.png">| step=80k时出现了正的平均分，说明探索到了最优解 | 能探索到最优解，但无法开采 |
 
 
 

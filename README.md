@@ -48,7 +48,7 @@ Solving RestMin_v1 with  Random-Network-Distillation, in the framework of Stable
 
 ## Size=6, Mode=1
 在这个模式中，由于合法动作的大量增加，探索的难度也大大提升了。另外，由于两个异色子可以无限横跳，所以环境中加了最大50步的限制。
-### Benchmark: PPO
+### 基线: PPO
 使用标准的PPO作为基准，需要对环境作出一些修改，使之不是奖励稀疏的环境：
 <code>reward = 100 if count == 2 else 5*(6-count)</code>
 
